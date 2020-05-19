@@ -1,0 +1,29 @@
+attempts = 1
+success = False
+
+userlist = {
+  "Fay123":"password123",
+  "Ebun123":"password1234",
+  "Chib123":"password12345"
+}
+
+# looping over login attempts
+while attempts <= 3 and success == False:
+
+  username = input("Enter your username: ")
+  password = input("Enter your password: ")
+
+  # password is password stored in the dictionary for that user
+  if password == userlist.get(username):
+    import random 
+    n = random.randint (4000,5000)
+    print ("Sending two-factor-authentication code...")
+    print (n)
+    guess = int(input("Enter the code recieved: "))
+    if guess == n:
+      print ("Welcome User")
+      success = True
+    else:
+      print("Incorrect login")
+    # add one to attempts
+    attempts = attempts + 1
